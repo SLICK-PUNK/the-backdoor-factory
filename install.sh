@@ -15,8 +15,8 @@ fi
 #check if kali
 uname -a | grep -i kali &> /dev/null 
 if [ $? -eq 0 ]; then
-	apt-get update
-	apt-get install -y python-capstone autoconf libtool curl libcurl4-openssl-dev
+	apt update
+	apt install -y python-capstone autoconf libtool curl libcurl4-openssl-dev
 
 	echo '[*] Install osslsigncode'
     cd osslsigncode
@@ -30,7 +30,7 @@ if [ $? -eq 0 ]; then
 	uname -a | grep -i "armv" &> /dev/null
 	if [ $? -ne 0 ]; then
                 echo "[*] installing appack for onionduke"
-		sudo apt-get install -y libc6-dev-i386
+		sudo apt install -y libc6-dev-i386
 		cd ./aPLib/example/
 		gcc -c -I../lib/elf -m32 -Wall -O2 -s -o appack.o appack.c -v 
 		gcc -m32 -Wall -O2 -s -o appack appack.o ../lib/elf/aplib.a -v 
@@ -45,7 +45,7 @@ uname -a | grep -v "kali" | grep -i linux &> /dev/null
 if [ $? -eq 0 ]; then
 
 	if hash pip 2>/dev/null; then
-		sudo apt-get install -y python-pip autoconf libtool curl libcurl4-openssl-dev
+		sudo apt install -y python-pip autoconf libtool curl libcurl4-openssl-dev
 	        pip install pefile
 	        #install capstone
 		pip install capstone
@@ -67,7 +67,7 @@ if [ $? -eq 0 ]; then
         if [ $? -ne 0 ]; then
                 echo "[*] installing appack for onionduke"
 		echo "[*] installing dependences"
-		sudo apt-get install libc6-dev-i386
+		sudo apt install libc6-dev-i386
                 cd ./aPLib/example/
                 gcc -c -I../lib/elf -m32 -Wall -O2 -s -o appack.o appack.c -v 
                 gcc -m32 -Wall -O2 -s -o appack appack.o ../lib/elf/aplib.a -v 
